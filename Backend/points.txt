@@ -1,0 +1,4 @@
+*** PACKAGE:-  npm i ioredis
+host = stream-feathery-knot-87513.db.redis.io
+port = 18020
+password = dS8fRTk0RkpClRAIL5oDrZlnn4kSDdEw
