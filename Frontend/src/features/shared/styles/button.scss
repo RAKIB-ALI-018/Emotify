@@ -1,0 +1,43 @@
+// ============================================
+// button.scss — shared label, input & button styles
+// used by both Login and Register forms
+//
+// Defined as %placeholders so they stay scoped —
+// @extend them inside .login-page / .register-page
+// instead of applying globally to every input/button.
+// ============================================
+
+%form-label {
+    font-size: 1rem;
+}
+
+%form-input {
+    background: none;
+    outline: none;
+    border: 0.5px solid white;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 200;
+    padding-inline: 0.5rem;
+    padding-block: 0.75rem;
+    border-radius: 0.7rem;
+}
+
+%form-button {
+    background-color: #1DB954;
+    color: white;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    border-radius: 0.7rem;
+    border: 1px solid #1DB954;
+
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+
+    transition: transform 0.15s ease;
+
+    &:active {
+        transform: scale(0.95);
+    }
+}

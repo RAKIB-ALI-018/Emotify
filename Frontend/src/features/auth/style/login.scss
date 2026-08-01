@@ -1,0 +1,84 @@
+@use "../../shared/styles/button.scss";
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        padding-inline: 2rem;
+        padding-block: 1.5rem;
+        border-radius: 1rem;
+        background-color: #1E1E1E;
+        min-width: 25vw;
+
+        .heading {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            .icon {
+                color: #1DB954;
+                height: 3rem;
+                width: 3rem;
+            }
+
+            .text {
+                h1 {
+                    font-weight: 500;
+                }
+
+                p {
+                    opacity: 0.75;
+                }
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                label {
+                    @extend %form-label;
+                }
+
+                input {
+                    @extend %form-input;
+                }
+            }
+
+            button {
+                @extend %form-button;
+            }
+        }
+
+        .switch-auth {
+            text-align: center;
+            font-size: 0.95rem;
+            color: white;
+            opacity: 0.75;
+
+            a {
+                color: #1DB954;
+                font-weight: 600;
+                text-decoration: none;
+                margin-left: 0.25rem;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

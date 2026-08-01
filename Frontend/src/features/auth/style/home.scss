@@ -1,0 +1,109 @@
+.home-page {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: #0a0a0a;
+
+    // Layer 1: dot-grid texture across the whole page
+    background-image: radial-gradient(rgba(29, 185, 84, 0.35) 1px,
+            transparent 1px);
+    background-size: 22px 22px;
+
+    // Layer 2: big green glow rising from the bottom-right corner
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 85% 90%,
+                rgba(29, 185, 84, 0.55) 0%,
+                rgba(29, 185, 84, 0.18) 30%,
+                rgba(10, 10, 10, 0) 65%);
+        pointer-events: none;
+    }
+
+    .main-content {
+        position: absolute;
+        top: 25%;
+        left: 6%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            h1 {
+                font-size: 4rem;
+
+                span {
+                    color: #1DB954;
+                }
+            }
+
+            p {
+                font-size: 1rem;
+                opacity: 0.75;
+            }
+        }
+
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            .login-button {
+                background-color: #1DB954;
+                color: black;
+                padding-inline: 1rem;
+                padding-block: 0.2rem;
+                border-radius: 1rem;
+                border: 1px solid #1DB954;
+
+                font-size: 2rem;
+                font-weight: 400;
+                cursor: pointer;
+
+                transition: transform 0.15s ease;
+            }
+
+            .login-button:active {
+                transform: scale(0.95);
+            }
+
+
+            .register-button {
+                background-color: black;
+                color: white;
+                padding-inline: 1rem;
+                padding-block: 0.2rem;
+                border-radius: 1rem;
+                border: 1px solid #1DB954;
+
+                font-size: 1.5rem;
+                font-weight: 400;
+                cursor: pointer;
+
+                transition: transform 0.15s ease;
+
+            }
+
+            .register-button:active {
+                transform: scale(0.95);
+            }
+        }
+
+        h4{
+            opacity: 0.8;
+            font-size: 1rem;
+            font-weight: 300;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+
+
+
+}
