@@ -19,8 +19,8 @@ const Login = () => {
                     <form>
 
                         <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="text" id='email' name='email' placeholder='Enter your email' required />
+                            <label htmlFor="email">Email / Username</label>
+                            <input type="text" id='email' name='email' placeholder='Enter your email or username' required />
                         </div>
 
                         <div className="form-group">

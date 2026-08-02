@@ -15,8 +15,8 @@ const Home = () => {
               how you're feeling today.</p>
           </div>
           <div className="buttons">
-            <button className='login-button' onClick={() => navigate("/login")}>Login</button>
-            <button className='register-button' onClick={() => navigate("/register")}>Create Account</button>
+            <button className='login-button click-btn' onClick={() => navigate("/login")}>Login</button>
+            <button className='register-button click-btn' onClick={() => navigate("/register")}>Create Account</button>
           </div>
           <h4>Continue as Guest</h4>
         </div>

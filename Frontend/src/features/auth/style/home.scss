@@ -54,15 +54,16 @@
         .buttons {
             display: flex;
             gap: 1rem;
+
             .login-button {
                 background-color: #1DB954;
                 color: black;
                 padding-inline: 1rem;
-                padding-block: 0.2rem;
+                padding-block: 0.4rem;
                 border-radius: 1rem;
                 border: 1px solid #1DB954;
 
-                font-size: 2rem;
+                font-size: 1.4rem;
                 font-weight: 400;
                 cursor: pointer;
 
@@ -78,11 +79,11 @@
                 background-color: black;
                 color: white;
                 padding-inline: 1rem;
-                padding-block: 0.2rem;
+                padding-block: 0.4rem;
                 border-radius: 1rem;
                 border: 1px solid #1DB954;
 
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 font-weight: 400;
                 cursor: pointer;
 
@@ -93,14 +94,22 @@
             .register-button:active {
                 transform: scale(0.95);
             }
+
+            .click-btn:hover {
+                transform: scale(1.05);
+            }
         }
 
-        h4{
+        h4 {
             opacity: 0.8;
             font-size: 1rem;
             font-weight: 300;
             cursor: pointer;
             text-decoration: underline;
+        }
+
+        h4:hover {
+            color: #1DB954;
         }
     }
 
