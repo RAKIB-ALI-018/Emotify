@@ -1,8 +1,28 @@
 import React from 'react';
+import { useState } from 'react'
 import { Link } from 'react-router';
 import '../style/login.scss'
+import { useNavigate } from 'react-router';
+import { useAuth } from '../hooks/useAuth';
 
 const Register = () => {
+
+    const { loading, registerHandler } = useAuth()
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate()
+
+    async function submitHandler(e){
+
+        e.preventDefault()
+        await registerHandler({email, username, password})
+        navigate("/")
+
+    }
+
     return (
         <div>
             <main className="login-page">
@@ -16,21 +36,31 @@ const Register = () => {
                             <p>Get started in just a few clicks.</p>
                         </div>
                     </div>
-                    <form>
+
+                    <form onSubmit={submitHandler}>
 
                         <div className="form-group">
                             <label htmlFor="full-name">Full Name</label>
-                            <input type="text" id='full-name' name='full-name' placeholder='Enter your full name' required />
+                            <input
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                type="text" id='full-name' name='full-name' placeholder='Enter your full name' required />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input type="text" id='email' name='email' placeholder='Enter your email' required />
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                type="text" id='email' name='email' placeholder='Enter your email' required />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="text" id='password' name='password' placeholder='Enter your password' required />
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="text" id='password' name='password' placeholder='Enter your password' required />
                         </div>
 
                         <button type='submit'>Create Account</button>

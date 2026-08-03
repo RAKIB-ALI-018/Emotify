@@ -11,7 +11,7 @@ const Home = () => {
           <div className="text">
             <h1>Feel the Music. <br />
               Powered by Your Mood <br /> with <span>Emotify.</span></h1>
-            <p>Discover songs that understand <br />
+            <p>Discover songs that understand 
               how you're feeling today.</p>
           </div>
           <div className="buttons">

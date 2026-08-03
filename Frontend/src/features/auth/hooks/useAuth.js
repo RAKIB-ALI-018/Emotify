@@ -1,3 +1,5 @@
+//* Hook layer
+
 import { register, login, getMe, logout } from "../services/auth.api"
 import { useContext } from "react"
 import { AuthContext } from "../auth.context"
@@ -37,5 +39,7 @@ export const useAuth = () => {
         setLoading(false)
     }
 
-    
+    return (
+        {user, loading, registerHandler, loginHandler, getMeHandler, logoutHandler }
+    )
 }

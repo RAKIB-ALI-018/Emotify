@@ -55,14 +55,16 @@ async function loginUser(req, res) {
 
     if (!user) {
         return res.status(400).json({
-            message: "Invalid Credentials." //* Task-2
+            // message: "Invalid Credentials." //* Task-2
+            message:"No account found with this email/username."
         })
     }
     const isPasswordValid = await bcrypt.compare(password, user.password)
 
     if (!isPasswordValid) {
         return res.status(400).json({
-            message: "Invalid Credentials."
+            // message: "Invalid Credentials."
+            message:"Incorrect Password."
         })
     }
 

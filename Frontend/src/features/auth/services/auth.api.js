@@ -1,3 +1,5 @@
+//* API Layer
+
 import axios from 'axios'
 
 const api = axios.create({
@@ -6,7 +8,7 @@ const api = axios.create({
 })
 
 export async function register({email, username, password}){
-    const response = api.post('/api/auth/register',
+    const response = await api.post('/api/auth/register',
         {email, username, password}
     )
     return response.data
@@ -14,7 +16,7 @@ export async function register({email, username, password}){
 
 
 export async function login({email, password, username}){
-    const response =api.post("/api/auth/login", 
+    const response =await api.post("/api/auth/login", 
         {username, email, password}
     )
     return response.data
@@ -22,13 +24,13 @@ export async function login({email, password, username}){
 
 
 export async function getMe(){
-    const response = api.get("/api/auth/get-me")
+    const response = await api.get("/api/auth/get-me")
 
     return response.data
 }
 
 export async function logout(){
-    const response = api.get("/api/auth/logout")
+    const response = await api.get("/api/auth/logout")
 
     return response.data
 }

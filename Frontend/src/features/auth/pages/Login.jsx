@@ -1,8 +1,32 @@
 import React from 'react';
+import { useState } from 'react'
 import { Link } from 'react-router';
 import '../style/login.scss'
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
+
+    const { loading, loginHandler } = useAuth()
+
+    const [emailOrUsername, setEmailOrUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
+
+    const navigate = useNavigate()
+
+    async function submitHandler(e) {
+        e.preventDefault()
+        setErrorMsg("")
+        try {
+            await loginHandler({ email: emailOrUsername, username: emailOrUsername, password })
+            navigate("/")
+
+        } catch (error) {
+            setErrorMsg(error.response?.data?.message || "Something went wrong. Please try again.");
+
+        }
+    }
     return (
         <div>
             <main className="login-page">
@@ -16,17 +40,26 @@ const Login = () => {
                             <p>Log in to continue</p>
                         </div>
                     </div>
-                    <form>
+
+                    <form onSubmit={submitHandler}>
 
                         <div className="form-group">
                             <label htmlFor="email">Email / Username</label>
-                            <input type="text" id='email' name='email' placeholder='Enter your email or username' required />
+                            <input
+                                value={emailOrUsername}
+                                onChange={(e) => setEmailOrUsername(e.target.value)}
+                                type="text" id='email' name='email' placeholder='Enter your email or username' required />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input type="text" id='password' name='password' placeholder='Enter your password' required />
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                type="text" id='password' name='password' placeholder='Enter your password' required />
                         </div>
+                        {/* error message: jab user galat input enter karega */}
+                        {errorMsg && <p className="error-text">{errorMsg}</p>}
 
                         <button type='submit'>Login</button>
 
