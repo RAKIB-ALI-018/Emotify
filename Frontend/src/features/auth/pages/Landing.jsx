@@ -2,7 +2,7 @@ import React from 'react';
 import "../style/home.scss"
 import { useNavigate } from "react-router";
 
-const Home = () => {
+const Landing = () => {
   const navigate = useNavigate();
   return (
     <div>
@@ -28,4 +28,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default Landing;

@@ -19,7 +19,7 @@ const Register = () => {
 
         e.preventDefault()
         await registerHandler({email, username, password})
-        navigate("/")
+        navigate("/home")
 
     }
 

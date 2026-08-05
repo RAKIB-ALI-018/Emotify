@@ -20,7 +20,7 @@ const Login = () => {
         setErrorMsg("")
         try {
             await loginHandler({ email: emailOrUsername, username: emailOrUsername, password })
-            navigate("/")
+            navigate("/home")
 
         } catch (error) {
             setErrorMsg(error.response?.data?.message || "Something went wrong. Please try again.");
