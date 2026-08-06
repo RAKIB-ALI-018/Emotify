@@ -28,7 +28,7 @@ async function uploadSong(req, res) {
     const song = await songModel.create({
         title: tags.title,
         url: songFile.url,
-        postUrl: posterFile.url,   // schema mein field ka naam "postUrl" hai, "posterUrl" nahi — yeh bhi mismatch hai!
+        postUrl: posterFile.url,
         mood
     })
 
@@ -36,23 +36,34 @@ async function uploadSong(req, res) {
         message: "Song uploaded successfully",
         song
     })
-
-    console.log(tags)
-
 }
 
 
-async function getSong(req, res){
-    const {mood} = req.query
-    const song = await songModel.findOne({
-        mood
-    })
+async function getSong(req, res) {
+    const { mood } = req.query
 
-    res.status(200).json({
-        message:"Song Fetched Successfully.",
-        song
-    })
+    if (!mood) {
+        return res.status(400).json({
+            message: "Mood query param is required."
+        })
+    }
 
+    // case-insensitive match — works whether the DB has "sad", "Sad", or "SAD"
+    const songs = await songModel.aggregate([
+        { $match: { mood: { $regex: new RegExp(`^${mood}$`, "i") } } },
+        { $sample: { size: 1 } }
+    ])
+
+    if (songs.length === 0) {
+        return res.status(404).json({
+            message: `No songs found for mood: ${mood}`
+        })
+    }
+
+    return res.status(200).json({
+        message: "Song fetched successfully",
+        song: songs[0]
+    })
 }
 
 module.exports = { uploadSong, getSong }
